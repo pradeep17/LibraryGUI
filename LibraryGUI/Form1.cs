@@ -55,7 +55,7 @@ namespace LibraryGUI
             {
                 cnsql.Open();
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
                 Console.WriteLine(ex.Message, "Sql Error");
             }
