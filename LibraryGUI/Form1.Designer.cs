@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -43,9 +42,21 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lIBRARYDataSet = new LibraryGUI.LIBRARYDataSet();
+            this.lIBRARYDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bookcopiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.book_copiesTableAdapter = new LibraryGUI.LIBRARYDataSetTableAdapters.book_copiesTableAdapter();
+            this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bookTableAdapter = new LibraryGUI.LIBRARYDataSetTableAdapters.bookTableAdapter();
+            this.bookcopiesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lIBRARYDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lIBRARYDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookcopiesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookcopiesBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -75,22 +86,6 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(111, 203);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 205);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Book name : \r\n";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -109,7 +104,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(731, 422);
+            this.tabControl1.Size = new System.Drawing.Size(905, 445);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
@@ -121,24 +116,22 @@
             this.tabPage1.Controls.Add(this.textBox3);
             this.tabPage1.Controls.Add(this.richTextBox1);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.textBox2);
-            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(723, 393);
+            this.tabPage1.Size = new System.Drawing.Size(897, 416);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Books Availability";
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(285, 216);
+            this.dataGridView1.Location = new System.Drawing.Point(22, 215);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(474, 150);
             this.dataGridView1.TabIndex = 10;
             // 
             // textBox4
@@ -195,11 +188,44 @@
             this.tabPage3.Text = "Add a borrower";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // lIBRARYDataSet
+            // 
+            this.lIBRARYDataSet.DataSetName = "LIBRARYDataSet";
+            this.lIBRARYDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lIBRARYDataSetBindingSource
+            // 
+            this.lIBRARYDataSetBindingSource.DataSource = this.lIBRARYDataSet;
+            this.lIBRARYDataSetBindingSource.Position = 0;
+            // 
+            // bookcopiesBindingSource
+            // 
+            this.bookcopiesBindingSource.DataMember = "book_copies";
+            this.bookcopiesBindingSource.DataSource = this.lIBRARYDataSetBindingSource;
+            // 
+            // book_copiesTableAdapter
+            // 
+            this.book_copiesTableAdapter.ClearBeforeFill = true;
+            // 
+            // bookBindingSource
+            // 
+            this.bookBindingSource.DataMember = "book";
+            this.bookBindingSource.DataSource = this.lIBRARYDataSetBindingSource;
+            // 
+            // bookTableAdapter
+            // 
+            this.bookTableAdapter.ClearBeforeFill = true;
+            // 
+            // bookcopiesBindingSource1
+            // 
+            this.bookcopiesBindingSource1.DataMember = "book_copies";
+            this.bookcopiesBindingSource1.DataSource = this.lIBRARYDataSetBindingSource;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(744, 446);
+            this.ClientSize = new System.Drawing.Size(914, 458);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -208,6 +234,11 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lIBRARYDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lIBRARYDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookcopiesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bookcopiesBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -217,8 +248,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -229,6 +258,13 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.BindingSource lIBRARYDataSetBindingSource;
+        private LIBRARYDataSet lIBRARYDataSet;
+        private System.Windows.Forms.BindingSource bookcopiesBindingSource;
+        private LIBRARYDataSetTableAdapters.book_copiesTableAdapter book_copiesTableAdapter;
+        private System.Windows.Forms.BindingSource bookBindingSource;
+        private LIBRARYDataSetTableAdapters.bookTableAdapter bookTableAdapter;
+        private System.Windows.Forms.BindingSource bookcopiesBindingSource1;
     }
 }
 
