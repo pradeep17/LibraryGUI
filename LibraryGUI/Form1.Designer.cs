@@ -58,6 +58,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.ConfirmCheckOut_Button = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -182,6 +183,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.ConfirmCheckOut_Button);
             this.tabPage2.Controls.Add(this.dataGridView2);
             this.tabPage2.Controls.Add(this.label6);
@@ -308,7 +310,7 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(32, 243);
+            this.dataGridView2.Location = new System.Drawing.Point(248, 260);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(474, 150);
             this.dataGridView2.TabIndex = 11;
@@ -317,12 +319,24 @@
             // 
             this.ConfirmCheckOut_Button.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ConfirmCheckOut_Button.Enabled = false;
-            this.ConfirmCheckOut_Button.Location = new System.Drawing.Point(504, 243);
+            this.ConfirmCheckOut_Button.Location = new System.Drawing.Point(46, 260);
             this.ConfirmCheckOut_Button.Name = "ConfirmCheckOut_Button";
             this.ConfirmCheckOut_Button.Size = new System.Drawing.Size(196, 23);
             this.ConfirmCheckOut_Button.TabIndex = 12;
             this.ConfirmCheckOut_Button.Text = "Confirm check out";
             this.ConfirmCheckOut_Button.UseVisualStyleBackColor = false;
+            this.ConfirmCheckOut_Button.Click += new System.EventHandler(this.ConfirmCheckOut_Button_Click);
+            // 
+            // label7
+            // 
+            this.label7.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(245, 244);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(236, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Review below items before confirming check out";
+            this.label7.Visible = false;
             // 
             // Form1
             // 
@@ -380,6 +394,7 @@
         private System.Windows.Forms.TextBox BranchId_text;
         private System.Windows.Forms.Button ConfirmCheckOut_Button;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.Label label7;
     }
 }
 
