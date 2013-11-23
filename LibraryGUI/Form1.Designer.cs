@@ -143,7 +143,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(22, 215);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(474, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(660, 150);
             this.dataGridView1.TabIndex = 10;
             // 
             // Title_text
@@ -268,7 +268,7 @@
             this.Checkout_button.Name = "Checkout_button";
             this.Checkout_button.Size = new System.Drawing.Size(196, 23);
             this.Checkout_button.TabIndex = 3;
-            this.Checkout_button.Text = "Check Out";
+            this.Checkout_button.Text = "Proceed to Check Out";
             this.Checkout_button.UseVisualStyleBackColor = false;
             this.Checkout_button.Click += new System.EventHandler(this.Checkout_button_Click);
             // 
@@ -312,7 +312,7 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(248, 260);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(474, 150);
+            this.dataGridView2.Size = new System.Drawing.Size(643, 150);
             this.dataGridView2.TabIndex = 11;
             // 
             // ConfirmCheckOut_Button

@@ -23,6 +23,7 @@ namespace LibraryGUI
         String checkout_bookid;
         String checkout_branchid;
         String checkout_cardno;
+        int checkout_availableCopies;
         String SQL_CONNECTION_STRING = ConfigurationManager.AppSettings["SQL_CONNECTION_STRING"].ToString();
         
         //getters and setters
@@ -39,6 +40,10 @@ namespace LibraryGUI
         {
             checkout_cardno= text;
         }
+         public void setavailableCopies(int value)
+         {
+             checkout_availableCopies = value;
+         }
         public String getbookid()
         {
             return checkout_bookid;
@@ -51,7 +56,11 @@ namespace LibraryGUI
         {
             return checkout_cardno;
         }
-
+         public int getavailableCopies()
+        {
+            return checkout_availableCopies;
+        }
+        
 
 
 
@@ -118,7 +127,7 @@ namespace LibraryGUI
             {
 
                 cmsql.Connection = cnsql;
-                cmsql.CommandText = "select b.Book_id,bc.Branch_id,bc.No_of_copies as Total_copies,(bc.No_of_copies -(select count(*) from BOOK_LOANS bl,BOOK b, BOOK_COPIES bc,BOOK_AUTHORS ba where bl.Book_id=b.Book_id and ba.Book_id=b.Book_id and bc.Book_id=b.Book_id and (b.Title like '%" + title + "%' AND b.Book_id LIKE '" + book_id + "' AND ba.Author_name like '%" + author + "%'))) as Available_copies  from BOOK b, BOOK_COPIES bc,BOOK_AUTHORS ba where  ba.Book_id=b.Book_id and bc.Book_id=b.Book_id and (b.Title like '%" + title + "%' AND b.Book_id LIKE '" + book_id + "' AND ba.Author_name like '%" + author + "%')";
+                cmsql.CommandText = "SELECT b.Book_id,b.title,ba.Author_name,bc.Branch_id,bc.No_of_copies AS Total_copies,(bc.No_of_copies - COUNT(bl.book_id)) AS Available_copies FROM ((BOOK b INNER JOIN BOOK_COPIES bc ON bc.Book_id =b.Book_id) INNER JOIN BOOK_AUTHORS ba ON ba.Book_id= b.Book_id) LEFT JOIN BOOK_LOANS bl  ON  bl.Book_id=b.Book_id AND bl.Branch_id = bc.Branch_id WHERE b. Title like '%" + title + "%' AND b.Book_id like '" + book_id + "' AND ba.Author_name like '%" + author + "%' GROUP BY b.Book_id, b.title ,ba.Author_name,bc.Branch_id, bc.No_of_copies, bl.book_id";
                 SqlDataAdapter sda = new SqlDataAdapter(cmsql);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
@@ -176,7 +185,7 @@ namespace LibraryGUI
             {
 
                 cmsql.Connection = cnsql;
-                cmsql.CommandText = "select bo.card_no as Card_Number,bo.fname+' ' +bo.lname as Borrower_Name,b.Book_id,bc.Branch_id,bc.No_of_copies as Total_copies,(bc.No_of_copies -(select count(*) from (BOOK_LOANS bl inner join BOOK b on bl.Book_id=b.Book_id) inner join BOOK_COPIES bc on bc.Book_id=b.Book_id and b.Book_id = '" + book_id + "' and bc.Branch_id = '" + branch_id + "')) as Available_copies  from (BOOK b inner join BOOK_COPIES bc on bc.Book_id=b.Book_id) inner join borrower bo on bo.card_no ='" + card_no + "' where b.Book_id = '" + book_id + "' and bc.Branch_id = '" + branch_id + "'";
+                cmsql.CommandText = "SELECT bo.card_no,bo.fname+ ' ' +bo.lname AS Borrower_Name,b.Book_id,bc.Branch_id,bc.No_of_copies AS Total_copies,(bc.No_of_copies - COUNT(bl.book_id)) AS Available_copies  FROM (((BOOK b INNER JOIN BOOK_COPIES bc ON bc.Book_id=b.Book_id) INNER JOIN borrower bo ON bo.card_no ='9004') LEFT JOIN BOOK_LOANS bl ON  bl.Book_id=b.Book_id AND bl.Branch_id = bc.Branch_id) WHERE b.Book_id = '" + book_id + "' and bc.Branch_id = '" + branch_id + "' GROUP BY bo.card_no,bo.fname,bo.lname,b.Book_id,bc.Branch_id,bc.No_of_copies";
                 SqlDataAdapter sda = new SqlDataAdapter(cmsql);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
@@ -193,14 +202,22 @@ namespace LibraryGUI
                     setbookid(book_id);
                     setbranchid(branch_id);
                     setcardno(card_no);
+
+                    SqlDataReader sdr = cmsql.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        setavailableCopies(Convert.ToInt16(sdr["Available_copies"]));
+                    }
                 }
            
             
             }
             catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message, "Sql Error");
+                
+                    MessageBox.Show(ex.Message, "Sql Error");
             }
+            
             catch (Exception genex)
             {
                 MessageBox.Show(genex.Message, "Exception caught due to invalid entries. Please re enter details and retry");
@@ -211,9 +228,57 @@ namespace LibraryGUI
         private void ConfirmCheckOut_Button_Click(object sender, EventArgs e)
         {
             CreateConnection();
-            insertCheckoutdata();
+            if (getavailableCopies() <= 0)
+            {
+                MessageBox.Show("Error : No books available to check out");
+            }
+            else
+            {
+                insertCheckoutdata();
+                displaycheckoutsummary();
+            }
             CloseConnection();
+
         }
+        private void displaycheckoutsummary()
+        {
+
+            try
+            {
+
+                cmsql.Connection = cnsql;
+                cmsql.CommandText = "SELECT book_id,branch_id,card_no,CONVERT(varchar(10),date_out,101) AS DATE_OUT,CONVERT(varchar(10),due_date,101) AS DUE_DATE FROM BOOK_LOANS where book_id = '"+ getbookid() + "'";
+                SqlDataAdapter sda = new SqlDataAdapter(cmsql);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+
+                DataSet ds = new DataSet();
+                ds.Tables.Add(dt);
+                if (ds.Tables[0].Rows.Count == 0)
+                    MessageBox.Show("No values were returned for the search! Please retry");
+                else
+                {
+                    label7.Text  = "Check out summary:";
+                    dataGridView2.DataSource = ds.Tables[0];
+                   
+                    
+                }
+
+
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "Sql Error");
+            }
+
+            catch (Exception genex)
+            {
+                MessageBox.Show(genex.Message, "Exception caught due to invalid entries. Please re enter details and retry");
+            }
+
+        }
+
         private void insertCheckoutdata()
         {
             try
@@ -222,10 +287,16 @@ namespace LibraryGUI
                 cmsql.Connection = cnsql;
                 cmsql.CommandText = "INSERT INTO book_loans VALUES('" + getbookid() + "','" + getbranchid() + "','" + getcardno() + "',GETDATE(),GETDATE() + 14)";
                 cmsql.ExecuteNonQuery();
+                MessageBox.Show("This transaction has been successfully updated for the borrower");
+                ConfirmCheckOut_Button.Enabled = false;
+
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Error while inserting:" + ex.Message, "Sql Error");
+                if (ex.Message.Contains("PRIMARY KEY"))
+                    MessageBox.Show("This borrower has been issued a similar book from the same Library branch.\nPlease select a different book \n\n Following are the details:" + ex.Message, "Duplicate found");
+                else
+                    MessageBox.Show("Error while inserting:" + ex.Message, "Sql Error");
             }
             catch (Exception genex)
             {
