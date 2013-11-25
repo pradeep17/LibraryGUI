@@ -24,6 +24,7 @@ namespace LibraryGUI
         String checkout_branchid;
         String checkout_cardno;
         int checkout_availableCopies;
+        int count_borrowed;
         String SQL_CONNECTION_STRING = ConfigurationManager.AppSettings["SQL_CONNECTION_STRING"].ToString();
         
         //getters and setters
@@ -44,6 +45,10 @@ namespace LibraryGUI
          {
              checkout_availableCopies = value;
          }
+         public void setcount(int value)
+         {
+             count_borrowed = value;
+         }
         public String getbookid()
         {
             return checkout_bookid;
@@ -60,8 +65,11 @@ namespace LibraryGUI
         {
             return checkout_availableCopies;
         }
+          public int getcount()
+        {
+            return count_borrowed;
+        }
         
-
 
 
         public Form1()
@@ -139,7 +147,7 @@ namespace LibraryGUI
                     MessageBox.Show("No values were returned for the search! Please retry");
                 else
                     dataGridView1.DataSource = ds.Tables[0];
-                
+                `
                 
             }
             catch (SqlException ex)
@@ -174,6 +182,7 @@ namespace LibraryGUI
             {
                    CreateConnection();
             getcheckoutdetails(book_id, branch_id, card_no);
+            getborrowerbookcount(card_no);
                 CloseConnection();
             }
 
@@ -208,6 +217,7 @@ namespace LibraryGUI
                     {
                         setavailableCopies(Convert.ToInt16(sdr["Available_copies"]));
                     }
+                    sdr.Close();
                 }
            
             
@@ -225,6 +235,37 @@ namespace LibraryGUI
 
         }
 
+         private void getborrowerbookcount(String card_no)
+        {
+
+            try
+            {
+
+                cmsql.Connection = cnsql;
+                cmsql.CommandText = "SELECT COUNT(card_no) as Count_borrowed FROM BOOK_LOANS WHERE CARD_NO = '" + card_no + "'";
+               
+
+                    SqlDataReader sdr = cmsql.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        setcount(Convert.ToInt16(sdr["Count_borrowed"]));
+                    }
+             
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "Sql Error");
+            }
+
+            catch (Exception genex)
+            {
+                MessageBox.Show(genex.Message, "Exception caught due to invalid entries. Please re enter details and retry");
+            }
+
+            
+            }
+
         private void ConfirmCheckOut_Button_Click(object sender, EventArgs e)
         {
             CreateConnection();
@@ -234,8 +275,15 @@ namespace LibraryGUI
             }
             else
             {
-                insertCheckoutdata();
-                displaycheckoutsummary();
+                if (count_borrowed >= 3)
+                {
+                    MessageBox.Show("Error : The book cannot be checked out.\n The borrower has reached the limit. Number of books borrowed: " + count_borrowed);
+                }
+                else
+                {
+                    insertCheckoutdata();
+                    displaycheckoutsummary();
+                }
             }
             CloseConnection();
 
