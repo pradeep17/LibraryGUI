@@ -41,8 +41,26 @@
             this.AuthorName_text = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
+            this.ConfirmCheckOut_Button = new System.Windows.Forms.Button();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.CardNo_text = new System.Windows.Forms.TextBox();
+            this.BranchId_text = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Checkout_button = new System.Windows.Forms.Button();
+            this.CheckoutBookId_text = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.checkinFirstName = new System.Windows.Forms.TextBox();
+            this.checkinCardNo = new System.Windows.Forms.TextBox();
+            this.checkinBookId = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.lIBRARYDataSet = new LibraryGUI.LIBRARYDataSet();
             this.lIBRARYDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bookcopiesBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -50,25 +68,35 @@
             this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bookTableAdapter = new LibraryGUI.LIBRARYDataSetTableAdapters.bookTableAdapter();
             this.bookcopiesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.CheckoutBookId_text = new System.Windows.Forms.TextBox();
-            this.Checkout_button = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.BranchId_text = new System.Windows.Forms.TextBox();
-            this.CardNo_text = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.ConfirmCheckOut_Button = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.checkinSearch = new System.Windows.Forms.Button();
+            this.checkinLastName = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.check_in = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lIBRARYDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lIBRARYDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookcopiesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookcopiesBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -113,6 +141,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -145,6 +174,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(660, 150);
             this.dataGridView1.TabIndex = 10;
+            this.dataGridView1.Visible = false;
             // 
             // Title_text
             // 
@@ -198,8 +228,93 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(897, 416);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Check in/check out books";
+            this.tabPage2.Text = "Check out";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(245, 244);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(236, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Review below items before confirming check out";
+            this.label7.Visible = false;
+            // 
+            // ConfirmCheckOut_Button
+            // 
+            this.ConfirmCheckOut_Button.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.ConfirmCheckOut_Button.Enabled = false;
+            this.ConfirmCheckOut_Button.Location = new System.Drawing.Point(46, 260);
+            this.ConfirmCheckOut_Button.Name = "ConfirmCheckOut_Button";
+            this.ConfirmCheckOut_Button.Size = new System.Drawing.Size(196, 23);
+            this.ConfirmCheckOut_Button.TabIndex = 12;
+            this.ConfirmCheckOut_Button.Text = "Confirm check out";
+            this.ConfirmCheckOut_Button.UseVisualStyleBackColor = false;
+            this.ConfirmCheckOut_Button.Click += new System.EventHandler(this.ConfirmCheckOut_Button_Click);
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Location = new System.Drawing.Point(248, 260);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(643, 150);
+            this.dataGridView2.TabIndex = 11;
+            this.dataGridView2.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(43, 125);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(186, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Enter the card number of the borrower";
+            // 
+            // CardNo_text
+            // 
+            this.CardNo_text.Location = new System.Drawing.Point(303, 125);
+            this.CardNo_text.Name = "CardNo_text";
+            this.CardNo_text.Size = new System.Drawing.Size(130, 20);
+            this.CardNo_text.TabIndex = 6;
+            // 
+            // BranchId_text
+            // 
+            this.BranchId_text.Location = new System.Drawing.Point(529, 66);
+            this.BranchId_text.Name = "BranchId_text";
+            this.BranchId_text.Size = new System.Drawing.Size(100, 20);
+            this.BranchId_text.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(364, 69);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(142, 13);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Enter branch ID for the book";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // Checkout_button
+            // 
+            this.Checkout_button.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Checkout_button.Location = new System.Drawing.Point(100, 185);
+            this.Checkout_button.Name = "Checkout_button";
+            this.Checkout_button.Size = new System.Drawing.Size(196, 23);
+            this.Checkout_button.TabIndex = 3;
+            this.Checkout_button.Text = "Proceed to Check Out";
+            this.Checkout_button.UseVisualStyleBackColor = false;
+            this.Checkout_button.Click += new System.EventHandler(this.Checkout_button_Click);
+            // 
+            // CheckoutBookId_text
+            // 
+            this.CheckoutBookId_text.Location = new System.Drawing.Point(214, 69);
+            this.CheckoutBookId_text.Name = "CheckoutBookId_text";
+            this.CheckoutBookId_text.Size = new System.Drawing.Size(100, 20);
+            this.CheckoutBookId_text.TabIndex = 2;
             // 
             // label2
             // 
@@ -214,12 +329,118 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.label12);
+            this.tabPage3.Controls.Add(this.checkinLastName);
+            this.tabPage3.Controls.Add(this.checkinSearch);
+            this.tabPage3.Controls.Add(this.dataGridView3);
+            this.tabPage3.Controls.Add(this.label9);
+            this.tabPage3.Controls.Add(this.label11);
+            this.tabPage3.Controls.Add(this.label8);
+            this.tabPage3.Controls.Add(this.checkinFirstName);
+            this.tabPage3.Controls.Add(this.checkinCardNo);
+            this.tabPage3.Controls.Add(this.checkinBookId);
+            this.tabPage3.Controls.Add(this.label10);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(908, 416);
+            this.tabPage3.Size = new System.Drawing.Size(897, 416);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Add a borrower";
+            this.tabPage3.Text = "Check In";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.check_in});
+            this.dataGridView3.Location = new System.Drawing.Point(107, 199);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.Size = new System.Drawing.Size(731, 150);
+            this.dataGridView3.TabIndex = 16;
+            this.dataGridView3.Visible = false;
+            this.dataGridView3.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellContentClick);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label9.Location = new System.Drawing.Point(308, 16);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(216, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Enter any of the below fields to start search  ";
+            // 
+            // label11
+            // 
+            this.label11.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(361, 59);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(186, 13);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Enter the card number of the borrower";
+            // 
+            // label8
+            // 
+            this.label8.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(60, 115);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(154, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Enter first name of the borrower";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // checkinFirstName
+            // 
+            this.checkinFirstName.Location = new System.Drawing.Point(231, 111);
+            this.checkinFirstName.Name = "checkinFirstName";
+            this.checkinFirstName.Size = new System.Drawing.Size(130, 20);
+            this.checkinFirstName.TabIndex = 12;
+            // 
+            // checkinCardNo
+            // 
+            this.checkinCardNo.Location = new System.Drawing.Point(585, 56);
+            this.checkinCardNo.Name = "checkinCardNo";
+            this.checkinCardNo.Size = new System.Drawing.Size(100, 20);
+            this.checkinCardNo.TabIndex = 11;
+            // 
+            // checkinBookId
+            // 
+            this.checkinBookId.Location = new System.Drawing.Point(231, 59);
+            this.checkinBookId.Name = "checkinBookId";
+            this.checkinBookId.Size = new System.Drawing.Size(100, 20);
+            this.checkinBookId.TabIndex = 9;
+            // 
+            // label10
+            // 
+            this.label10.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(60, 59);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(129, 13);
+            this.label10.TabIndex = 8;
+            this.label10.Text = "Enter book id to check in:";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.label18);
+            this.tabPage4.Controls.Add(this.textBox5);
+            this.tabPage4.Controls.Add(this.label13);
+            this.tabPage4.Controls.Add(this.textBox1);
+            this.tabPage4.Controls.Add(this.button1);
+            this.tabPage4.Controls.Add(this.label14);
+            this.tabPage4.Controls.Add(this.label15);
+            this.tabPage4.Controls.Add(this.label16);
+            this.tabPage4.Controls.Add(this.textBox2);
+            this.tabPage4.Controls.Add(this.textBox3);
+            this.tabPage4.Controls.Add(this.textBox4);
+            this.tabPage4.Controls.Add(this.label17);
+            this.tabPage4.Location = new System.Drawing.Point(4, 25);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(897, 416);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Add Borrower";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // lIBRARYDataSet
             // 
@@ -254,89 +475,147 @@
             this.bookcopiesBindingSource1.DataMember = "book_copies";
             this.bookcopiesBindingSource1.DataSource = this.lIBRARYDataSetBindingSource;
             // 
-            // CheckoutBookId_text
+            // checkinSearch
             // 
-            this.CheckoutBookId_text.Location = new System.Drawing.Point(214, 69);
-            this.CheckoutBookId_text.Name = "CheckoutBookId_text";
-            this.CheckoutBookId_text.Size = new System.Drawing.Size(100, 20);
-            this.CheckoutBookId_text.TabIndex = 2;
+            this.checkinSearch.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.checkinSearch.Location = new System.Drawing.Point(189, 150);
+            this.checkinSearch.Name = "checkinSearch";
+            this.checkinSearch.Size = new System.Drawing.Size(196, 23);
+            this.checkinSearch.TabIndex = 17;
+            this.checkinSearch.Text = "Show results";
+            this.checkinSearch.UseVisualStyleBackColor = false;
+            this.checkinSearch.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // Checkout_button
+            // checkinLastName
             // 
-            this.Checkout_button.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.Checkout_button.Location = new System.Drawing.Point(100, 185);
-            this.Checkout_button.Name = "Checkout_button";
-            this.Checkout_button.Size = new System.Drawing.Size(196, 23);
-            this.Checkout_button.TabIndex = 3;
-            this.Checkout_button.Text = "Proceed to Check Out";
-            this.Checkout_button.UseVisualStyleBackColor = false;
-            this.Checkout_button.Click += new System.EventHandler(this.Checkout_button_Click);
+            this.checkinLastName.Location = new System.Drawing.Point(585, 108);
+            this.checkinLastName.Name = "checkinLastName";
+            this.checkinLastName.Size = new System.Drawing.Size(130, 20);
+            this.checkinLastName.TabIndex = 18;
             // 
-            // label5
+            // label12
             // 
-            this.label5.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(364, 69);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(142, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Enter branch ID for the book";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.label12.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(389, 114);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(154, 13);
+            this.label12.TabIndex = 19;
+            this.label12.Text = "Enter last name of the borrower";
             // 
-            // BranchId_text
+            // check_in
             // 
-            this.BranchId_text.Location = new System.Drawing.Point(529, 66);
-            this.BranchId_text.Name = "BranchId_text";
-            this.BranchId_text.Size = new System.Drawing.Size(100, 20);
-            this.BranchId_text.TabIndex = 5;
+            this.check_in.HeaderText = "Check In";
+            this.check_in.Name = "check_in";
+            this.check_in.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.check_in.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.check_in.Text = "Check In book";
+            this.check_in.UseColumnTextForButtonValue = true;
             // 
-            // CardNo_text
+            // label13
             // 
-            this.CardNo_text.Location = new System.Drawing.Point(303, 125);
-            this.CardNo_text.Name = "CardNo_text";
-            this.CardNo_text.Size = new System.Drawing.Size(130, 20);
-            this.CardNo_text.TabIndex = 6;
+            this.label13.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(410, 124);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(59, 13);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "City, State*";
             // 
-            // label6
+            // textBox1
             // 
-            this.label6.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(43, 125);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(186, 13);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "Enter the card number of the borrower";
+            this.textBox1.Location = new System.Drawing.Point(606, 118);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(130, 20);
+            this.textBox1.TabIndex = 28;
             // 
-            // dataGridView2
+            // button1
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(248, 260);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(643, 150);
-            this.dataGridView2.TabIndex = 11;
+            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button1.Location = new System.Drawing.Point(252, 195);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(196, 23);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "Add borrower";
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // ConfirmCheckOut_Button
+            // label14
             // 
-            this.ConfirmCheckOut_Button.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ConfirmCheckOut_Button.Enabled = false;
-            this.ConfirmCheckOut_Button.Location = new System.Drawing.Point(46, 260);
-            this.ConfirmCheckOut_Button.Name = "ConfirmCheckOut_Button";
-            this.ConfirmCheckOut_Button.Size = new System.Drawing.Size(196, 23);
-            this.ConfirmCheckOut_Button.TabIndex = 12;
-            this.ConfirmCheckOut_Button.Text = "Confirm check out";
-            this.ConfirmCheckOut_Button.UseVisualStyleBackColor = false;
-            this.ConfirmCheckOut_Button.Click += new System.EventHandler(this.ConfirmCheckOut_Button_Click);
+            this.label14.AutoSize = true;
+            this.label14.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label14.Location = new System.Drawing.Point(329, 26);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(93, 13);
+            this.label14.TabIndex = 26;
+            this.label14.Text = "*  - Required fields";
             // 
-            // label7
+            // label15
             // 
-            this.label7.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(245, 244);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(236, 13);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Review below items before confirming check out";
-            this.label7.Visible = false;
+            this.label15.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(382, 69);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(136, 13);
+            this.label15.TabIndex = 25;
+            this.label15.Text = "Enter Borrower\'s last name*";
+            // 
+            // label16
+            // 
+            this.label16.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(81, 125);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(81, 13);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "Address Line 1*";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(252, 121);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(130, 20);
+            this.textBox2.TabIndex = 23;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(606, 66);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 22;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(252, 69);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 21;
+            // 
+            // label17
+            // 
+            this.label17.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(81, 69);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(136, 13);
+            this.label17.TabIndex = 20;
+            this.label17.Text = "Enter Borrower\'s first name*";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(606, 164);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(130, 20);
+            this.textBox5.TabIndex = 30;
+            // 
+            // label18
+            // 
+            this.label18.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(490, 171);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(38, 13);
+            this.label18.TabIndex = 31;
+            this.label18.Text = "Phone";
             // 
             // Form1
             // 
@@ -353,12 +632,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lIBRARYDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lIBRARYDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookcopiesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookcopiesBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -395,6 +679,31 @@
         private System.Windows.Forms.Button ConfirmCheckOut_Button;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox checkinFirstName;
+        private System.Windows.Forms.TextBox checkinCardNo;
+        private System.Windows.Forms.TextBox checkinBookId;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.Button checkinSearch;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox checkinLastName;
+        private System.Windows.Forms.DataGridViewButtonColumn check_in;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label17;
     }
 }
 

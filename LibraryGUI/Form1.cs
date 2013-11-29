@@ -129,6 +129,7 @@ namespace LibraryGUI
                 Console.WriteLine(ex.Message, "Sql Error");
             }
         }
+       
         private void getData(String book_id, String author, String title)
         {
             try
@@ -142,13 +143,14 @@ namespace LibraryGUI
                
                 DataSet ds = new DataSet();
                 ds.Tables.Add(dt);
-                 
-                if(ds.Tables[0].Rows.Count == 0)
+
+                if (ds.Tables[0].Rows.Count == 0)
                     MessageBox.Show("No values were returned for the search! Please retry");
                 else
+                {
                     dataGridView1.DataSource = ds.Tables[0];
-                `
-                
+                    dataGridView1.Visible = true;
+                }
             }
             catch (SqlException ex)
             {
@@ -207,6 +209,7 @@ namespace LibraryGUI
                 {
                     label7.Visible = true;
                     dataGridView2.DataSource = ds.Tables[0];
+                    dataGridView2.Visible = true;
                     ConfirmCheckOut_Button.Enabled = true;
                     setbookid(book_id);
                     setbranchid(branch_id);
@@ -271,13 +274,13 @@ namespace LibraryGUI
             CreateConnection();
             if (getavailableCopies() <= 0)
             {
-                MessageBox.Show("Error : No books available to check out");
+                MessageBox.Show("Out of stock for this Library Branch : No more book copies are available at this Library Branch to check out");
             }
             else
             {
                 if (count_borrowed >= 3)
                 {
-                    MessageBox.Show("Error : The book cannot be checked out.\n The borrower has reached the limit. Number of books borrowed: " + count_borrowed);
+                    MessageBox.Show("Error : The book cannot be checked out.\n The borrower has reached the limit(3 books per borrower). Number of books borrowed: " + count_borrowed);
                 }
                 else
                 {
@@ -308,7 +311,7 @@ namespace LibraryGUI
                 {
                     label7.Text  = "Check out summary:";
                     dataGridView2.DataSource = ds.Tables[0];
-                   
+                    dataGridView2.Visible = true;
                     
                 }
 
@@ -342,7 +345,7 @@ namespace LibraryGUI
             catch (SqlException ex)
             {
                 if (ex.Message.Contains("PRIMARY KEY"))
-                    MessageBox.Show("This borrower has been issued a similar book from the same Library branch.\nPlease select a different book \n\n Following are the details:" + ex.Message, "Duplicate found");
+                    MessageBox.Show("This borrower has been issued a similar book from the same Library branch.\nPlease select a different book \n\n ", "Duplicate found");
                 else
                     MessageBox.Show("Error while inserting:" + ex.Message, "Sql Error");
             }
@@ -350,6 +353,106 @@ namespace LibraryGUI
             {
                 MessageBox.Show(genex.Message, "Exception caught while inserting data");
             }
+        }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            if (e.RowIndex > -1)
+            {
+                String card_no = dataGridView3.Rows[e.RowIndex].Cells[3].Value.ToString();
+                String book_id = dataGridView3.Rows[e.RowIndex].Cells[4].Value.ToString();
+                String branch_id = dataGridView3.Rows[e.RowIndex].Cells[5].Value.ToString();
+                
+                CreateConnection();
+                deleteCheckinData(book_id, branch_id);
+                showCheckInResults(book_id, card_no, "", "");
+                CloseConnection();
+            }
+
+        }
+        private void deleteCheckinData(String book_id, String branch_id)
+        {
+            try
+            {
+
+                cmsql.Connection = cnsql;
+                cmsql.CommandText = "DELETE FROM book_loans WHERE book_id = '" + book_id + "' and branch_id = '" + branch_id + "'";
+                cmsql.ExecuteNonQuery();
+                MessageBox.Show("This transaction has been successfully updated for the borrower");
+                
+
+            }
+            catch (SqlException ex)
+            {
+               
+                    MessageBox.Show("Error while inserting:" + ex.Message, "Sql Error");
+            }
+            catch (Exception genex)
+            {
+                MessageBox.Show(genex.Message, "Exception caught while inserting data");
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            String book_id = Convert.ToString(checkinBookId.Text);
+            String card_no = Convert.ToString(checkinCardNo.Text);
+            String fname = Convert.ToString(checkinFirstName.Text);
+            String lname = Convert.ToString(checkinLastName.Text);
+            dataGridView3.Visible = false;
+            if (book_id == "" && card_no == "" && fname == "" && lname == "")
+                MessageBox.Show("Please enter a value for any of the fields to begin search");
+            else
+            {
+                if (book_id == "")
+                    book_id = "%%";
+                if (card_no == "")
+                    card_no = "%%";
+
+                CreateConnection();
+                showCheckInResults(book_id, card_no, fname, lname);
+                CloseConnection();
+            }
+        }
+
+        private void showCheckInResults(String book_id, String card_no, String fname, String lname)
+        {
+            try
+            {
+
+                cmsql.Connection = cnsql;
+                cmsql.CommandText = "SELECT bo.fname,bo.lname,bl.card_no,bl.book_id,bl.branch_id,bl.due_date FROM BOOK_LOANS bl INNER JOIN BORROWER bo ON bo.card_no = bl.card_no WHERE bl.card_no LIKE '" + card_no + "' AND bo.fname LIKE '%" + fname + "%' AND bo.lname LIKE '%" + lname + "%' AND bl.book_id LIKE '" + book_id + "'";
+                SqlDataAdapter sda = new SqlDataAdapter(cmsql);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+
+                DataSet ds = new DataSet();
+                ds.Tables.Add(dt);
+
+                if (ds.Tables[0].Rows.Count == 0)
+                    MessageBox.Show("No borrowed books were found for this search! Please retry");
+                else
+                {
+                    dataGridView3.DataSource = ds.Tables[0];
+                    dataGridView3.Visible = true;
+                }
+
+
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Sql Error");
+            }
+            catch (Exception genex)
+            {
+                MessageBox.Show(genex.Message, "Exception caught due to invalid entries. Please re enter details and retry");
+            }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
