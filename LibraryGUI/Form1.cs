@@ -238,7 +238,7 @@ namespace LibraryGUI
 
         }
 
-         private void getborrowerbookcount(String card_no)
+        private void getborrowerbookcount(String card_no)
         {
 
             try
@@ -246,14 +246,14 @@ namespace LibraryGUI
 
                 cmsql.Connection = cnsql;
                 cmsql.CommandText = "SELECT COUNT(card_no) as Count_borrowed FROM BOOK_LOANS WHERE CARD_NO = '" + card_no + "'";
-               
 
-                    SqlDataReader sdr = cmsql.ExecuteReader();
-                    while (sdr.Read())
-                    {
-                        setcount(Convert.ToInt16(sdr["Count_borrowed"]));
-                    }
-             
+
+                SqlDataReader sdr = cmsql.ExecuteReader();
+                while (sdr.Read())
+                {
+                    setcount(Convert.ToInt16(sdr["Count_borrowed"]));
+                }
+
             }
             catch (SqlException ex)
             {
@@ -266,8 +266,8 @@ namespace LibraryGUI
                 MessageBox.Show(genex.Message, "Exception caught due to invalid entries. Please re enter details and retry");
             }
 
-            
-            }
+
+        }
 
         private void ConfirmCheckOut_Button_Click(object sender, EventArgs e)
         {
@@ -452,6 +452,121 @@ namespace LibraryGUI
 
         private void label8_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+
+            String bofname = Convert.ToString(borrowerfname.Text);
+            String bolname = Convert.ToString(borrowerlname.Text);
+            String boaddr1 = Convert.ToString(borroweraddr1.Text);
+            String bocity = Convert.ToString(borrowercity.Text);
+            String bophone = Convert.ToString(borrowerphone.Text);
+
+            String boaddr = boaddr1 + ", " + bocity;
+            dataGridView3.Visible = false;
+            if (bofname == "" || bolname == "" || boaddr1 == "" || bocity == "")
+                MessageBox.Show("Please enter a value for the required fields");
+            
+            else
+            {
+                if (bophone == "")
+                    bophone = null;
+
+                CreateConnection();
+                insertBorrower(bofname, bolname, boaddr, bophone);
+                CloseConnection();
+            }
+        }
+
+        private void insertBorrower(String bofname, String bolname, String boaddr, String bophone)
+        {
+            String card_no = null;
+            bool valid = true;
+            try
+            {
+
+                cmsql.Connection = cnsql;
+                cmsql.CommandText = "SELECT fname,lname,address FROM borrower";
+                SqlDataReader sdr = cmsql.ExecuteReader();
+                while (sdr.Read())
+                {
+                    if (bofname == Convert.ToString(sdr["fname"]) && bolname == Convert.ToString(sdr["lname"]) && boaddr == Convert.ToString(sdr["address"]))
+                    {
+                        MessageBox.Show("An entry with the same borrower's name and address already exists in the database.\n The borrower cannot be added.");
+                        valid = false;
+                    }
+                }
+                sdr.Close();
+                if (valid)
+                {
+                    cmsql.CommandText = "INSERT INTO borrower VALUES((SELECT MAX(card_no)+1 FROM borrower), '" + bofname + "','" + bolname + "','" + boaddr + "','" + bophone + "')";
+                    cmsql.ExecuteNonQuery();
+                    MessageBox.Show("This transaction has been successfully updated for the borrower");
+                }
+
+                cmsql.CommandText = "SELECT MAX(card_no) as cardno FROM borrower";
+                 sdr = cmsql.ExecuteReader();
+                 while (sdr.Read())
+                 {
+                     card_no = Convert.ToString(sdr["cardno"]);
+                 }
+                 sdr.Close();
+                 showaddedborrower(card_no);
+                
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "Sql Error");
+            }
+
+            catch (Exception genex)
+            {
+                MessageBox.Show(genex.Message, "Exception caught due to invalid entries. Please re enter details and retry");
+            }
+
+
+        }
+
+        private void showaddedborrower(String card_no)
+        {
+
+            try
+            {
+
+                cmsql.Connection = cnsql;
+                cmsql.CommandText = "SELECT * FROM borrower where card_no = '" + card_no + "'";
+                SqlDataAdapter sda = new SqlDataAdapter(cmsql);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+
+                DataSet ds = new DataSet();
+                ds.Tables.Add(dt);
+                if (ds.Tables[0].Rows.Count == 0)
+                    MessageBox.Show("No values were returned for the search! Please retry");
+                else
+                {
+                    
+                    dataGridView4.DataSource = ds.Tables[0];
+                    label19.Visible = true;
+                    dataGridView4.Visible = true;
+
+                }
+
+
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message, "Sql Error");
+            }
+
+            catch (Exception genex)
+            {
+                MessageBox.Show(genex.Message, "Exception caught due to invalid entries. Please re enter details and retry");
+            }
 
         }
     }
