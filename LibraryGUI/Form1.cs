@@ -196,7 +196,7 @@ namespace LibraryGUI
             {
 
                 cmsql.Connection = cnsql;
-                cmsql.CommandText = "SELECT bo.card_no,bo.fname+ ' ' +bo.lname AS Borrower_Name,b.Book_id,bc.Branch_id,bc.No_of_copies AS Total_copies,(bc.No_of_copies - COUNT(bl.book_id)) AS Available_copies  FROM (((BOOK b INNER JOIN BOOK_COPIES bc ON bc.Book_id=b.Book_id) INNER JOIN borrower bo ON bo.card_no ='9004') LEFT JOIN BOOK_LOANS bl ON  bl.Book_id=b.Book_id AND bl.Branch_id = bc.Branch_id) WHERE b.Book_id = '" + book_id + "' and bc.Branch_id = '" + branch_id + "' GROUP BY bo.card_no,bo.fname,bo.lname,b.Book_id,bc.Branch_id,bc.No_of_copies";
+                cmsql.CommandText = "SELECT bo.card_no,bo.fname+ ' ' +bo.lname AS Borrower_Name,b.Book_id,bc.Branch_id,bc.No_of_copies AS Total_copies,(bc.No_of_copies - COUNT(bl.book_id)) AS Available_copies  FROM (((BOOK b INNER JOIN BOOK_COPIES bc ON bc.Book_id=b.Book_id) INNER JOIN borrower bo ON bo.card_no ='" + card_no + "') LEFT JOIN BOOK_LOANS bl ON  bl.Book_id=b.Book_id AND bl.Branch_id = bc.Branch_id) WHERE b.Book_id = '" + book_id + "' and bc.Branch_id = '" + branch_id + "' GROUP BY bo.card_no,bo.fname,bo.lname,b.Book_id,bc.Branch_id,bc.No_of_copies";
                 SqlDataAdapter sda = new SqlDataAdapter(cmsql);
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
@@ -430,14 +430,12 @@ namespace LibraryGUI
                 DataSet ds = new DataSet();
                 ds.Tables.Add(dt);
 
-                if (ds.Tables[0].Rows.Count == 0)
-                    MessageBox.Show("No borrowed books were found for this search! Please retry");
-                else
-                {
+                             
                     dataGridView3.DataSource = ds.Tables[0];
                     dataGridView3.Visible = true;
-                }
 
+                    if (ds.Tables[0].Rows.Count == 0)
+                        MessageBox.Show("No borrowed books were found! Please retry");
 
             }
             catch (SqlException ex)
