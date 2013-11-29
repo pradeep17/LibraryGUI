@@ -216,6 +216,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.White;
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.ConfirmCheckOut_Button);
             this.tabPage2.Controls.Add(this.dataGridView2);
@@ -232,7 +233,6 @@
             this.tabPage2.Size = new System.Drawing.Size(897, 416);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Check out";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
@@ -332,6 +332,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.BackColor = System.Drawing.Color.White;
             this.tabPage3.Controls.Add(this.label12);
             this.tabPage3.Controls.Add(this.checkinLastName);
             this.tabPage3.Controls.Add(this.checkinSearch);
@@ -348,7 +349,6 @@
             this.tabPage3.Size = new System.Drawing.Size(897, 416);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Check In";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
@@ -463,6 +463,7 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.BackColor = System.Drawing.Color.White;
             this.tabPage4.Controls.Add(this.label19);
             this.tabPage4.Controls.Add(this.dataGridView4);
             this.tabPage4.Controls.Add(this.label18);
@@ -482,7 +483,6 @@
             this.tabPage4.Size = new System.Drawing.Size(897, 416);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Add Borrower";
-            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // label18
             // 
