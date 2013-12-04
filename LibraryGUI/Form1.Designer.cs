@@ -1,6 +1,6 @@
 ﻿namespace LibraryGUI
 {
-    partial class Form1
+    partial class LIBRARY
     {
         /// <summary>
         /// Required designer variable.
@@ -36,7 +36,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Title_text = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.AuthorName_text = new System.Windows.Forms.TextBox();
@@ -88,7 +87,9 @@
             this.bookTableAdapter = new LibraryGUI.LIBRARYDataSetTableAdapters.bookTableAdapter();
             this.bookcopiesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -158,7 +159,6 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.Title_text);
             this.tabPage1.Controls.Add(this.label4);
@@ -183,19 +183,12 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1});
-            this.dataGridView1.Location = new System.Drawing.Point(49, 259);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 260);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(786, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(880, 150);
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.Visible = false;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Click on row to check out";
-            this.Column1.Name = "Column1";
-            this.Column1.Text = "Proceed to check out";
-            this.Column1.UseColumnTextForButtonValue = true;
             // 
             // Title_text
             // 
@@ -257,7 +250,7 @@
             // 
             this.label7.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(245, 244);
+            this.label7.Location = new System.Drawing.Point(6, 244);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(236, 13);
             this.label7.TabIndex = 13;
@@ -268,7 +261,7 @@
             // 
             this.ConfirmCheckOut_Button.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ConfirmCheckOut_Button.Enabled = false;
-            this.ConfirmCheckOut_Button.Location = new System.Drawing.Point(46, 260);
+            this.ConfirmCheckOut_Button.Location = new System.Drawing.Point(418, 231);
             this.ConfirmCheckOut_Button.Name = "ConfirmCheckOut_Button";
             this.ConfirmCheckOut_Button.Size = new System.Drawing.Size(196, 23);
             this.ConfirmCheckOut_Button.TabIndex = 12;
@@ -282,7 +275,7 @@
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(248, 260);
+            this.dataGridView2.Location = new System.Drawing.Point(123, 259);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(643, 150);
             this.dataGridView2.TabIndex = 11;
@@ -295,39 +288,39 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(43, 125);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(186, 13);
+            this.label6.Size = new System.Drawing.Size(189, 13);
             this.label6.TabIndex = 7;
-            this.label6.Text = "Enter the card number of the borrower";
+            this.label6.Text = "Enter the card number of the borrower:";
             // 
             // CardNo_text
             // 
-            this.CardNo_text.Location = new System.Drawing.Point(303, 125);
+            this.CardNo_text.Location = new System.Drawing.Point(282, 122);
             this.CardNo_text.Name = "CardNo_text";
-            this.CardNo_text.Size = new System.Drawing.Size(130, 20);
+            this.CardNo_text.Size = new System.Drawing.Size(139, 20);
             this.CardNo_text.TabIndex = 6;
             // 
             // BranchId_text
             // 
-            this.BranchId_text.Location = new System.Drawing.Point(529, 66);
+            this.BranchId_text.Location = new System.Drawing.Point(610, 66);
             this.BranchId_text.Name = "BranchId_text";
-            this.BranchId_text.Size = new System.Drawing.Size(100, 20);
+            this.BranchId_text.Size = new System.Drawing.Size(133, 20);
             this.BranchId_text.TabIndex = 5;
             // 
             // label5
             // 
             this.label5.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(364, 69);
+            this.label5.Location = new System.Drawing.Point(448, 69);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(142, 13);
+            this.label5.Size = new System.Drawing.Size(145, 13);
             this.label5.TabIndex = 4;
-            this.label5.Text = "Enter branch ID for the book";
+            this.label5.Text = "Enter branch ID for the book:";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // Checkout_button
             // 
             this.Checkout_button.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.Checkout_button.Location = new System.Drawing.Point(46, 187);
+            this.Checkout_button.Location = new System.Drawing.Point(248, 187);
             this.Checkout_button.Name = "Checkout_button";
             this.Checkout_button.Size = new System.Drawing.Size(196, 23);
             this.Checkout_button.TabIndex = 3;
@@ -337,9 +330,9 @@
             // 
             // CheckoutBookId_text
             // 
-            this.CheckoutBookId_text.Location = new System.Drawing.Point(214, 69);
+            this.CheckoutBookId_text.Location = new System.Drawing.Point(282, 69);
             this.CheckoutBookId_text.Name = "CheckoutBookId_text";
-            this.CheckoutBookId_text.Size = new System.Drawing.Size(100, 20);
+            this.CheckoutBookId_text.Size = new System.Drawing.Size(139, 20);
             this.CheckoutBookId_text.TabIndex = 2;
             // 
             // label2
@@ -379,13 +372,13 @@
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(389, 114);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(154, 13);
+            this.label12.Size = new System.Drawing.Size(157, 13);
             this.label12.TabIndex = 19;
-            this.label12.Text = "Enter last name of the borrower";
+            this.label12.Text = "Enter last name of the borrower:";
             // 
             // checkinLastName
             // 
-            this.checkinLastName.Location = new System.Drawing.Point(585, 108);
+            this.checkinLastName.Location = new System.Drawing.Point(602, 107);
             this.checkinLastName.Name = "checkinLastName";
             this.checkinLastName.Size = new System.Drawing.Size(130, 20);
             this.checkinLastName.TabIndex = 18;
@@ -393,7 +386,7 @@
             // checkinSearch
             // 
             this.checkinSearch.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.checkinSearch.Location = new System.Drawing.Point(189, 150);
+            this.checkinSearch.Location = new System.Drawing.Point(382, 159);
             this.checkinSearch.Name = "checkinSearch";
             this.checkinSearch.Size = new System.Drawing.Size(196, 23);
             this.checkinSearch.TabIndex = 17;
@@ -439,11 +432,11 @@
             // 
             this.label11.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(361, 59);
+            this.label11.Location = new System.Drawing.Point(389, 59);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(186, 13);
+            this.label11.Size = new System.Drawing.Size(189, 13);
             this.label11.TabIndex = 14;
-            this.label11.Text = "Enter the card number of the borrower";
+            this.label11.Text = "Enter the card number of the borrower:";
             // 
             // label8
             // 
@@ -451,9 +444,9 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(60, 115);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(154, 13);
+            this.label8.Size = new System.Drawing.Size(157, 13);
             this.label8.TabIndex = 13;
-            this.label8.Text = "Enter first name of the borrower";
+            this.label8.Text = "Enter first name of the borrower:";
             this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // checkinFirstName
@@ -465,16 +458,16 @@
             // 
             // checkinCardNo
             // 
-            this.checkinCardNo.Location = new System.Drawing.Point(585, 56);
+            this.checkinCardNo.Location = new System.Drawing.Point(602, 56);
             this.checkinCardNo.Name = "checkinCardNo";
-            this.checkinCardNo.Size = new System.Drawing.Size(100, 20);
+            this.checkinCardNo.Size = new System.Drawing.Size(130, 20);
             this.checkinCardNo.TabIndex = 11;
             // 
             // checkinBookId
             // 
             this.checkinBookId.Location = new System.Drawing.Point(231, 59);
             this.checkinBookId.Name = "checkinBookId";
-            this.checkinBookId.Size = new System.Drawing.Size(100, 20);
+            this.checkinBookId.Size = new System.Drawing.Size(130, 20);
             this.checkinBookId.TabIndex = 9;
             // 
             // label10
@@ -490,6 +483,8 @@
             // tabPage4
             // 
             this.tabPage4.BackColor = System.Drawing.Color.White;
+            this.tabPage4.Controls.Add(this.label21);
+            this.tabPage4.Controls.Add(this.label20);
             this.tabPage4.Controls.Add(this.label19);
             this.tabPage4.Controls.Add(this.dataGridView4);
             this.tabPage4.Controls.Add(this.label18);
@@ -514,7 +509,7 @@
             // 
             this.label19.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(124, 231);
+            this.label19.Location = new System.Drawing.Point(136, 234);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(118, 13);
             this.label19.TabIndex = 33;
@@ -527,7 +522,7 @@
             this.dataGridView4.AllowUserToDeleteRows = false;
             this.dataGridView4.AllowUserToResizeRows = false;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(93, 247);
+            this.dataGridView4.Location = new System.Drawing.Point(127, 259);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.Size = new System.Drawing.Size(643, 150);
             this.dataGridView4.TabIndex = 32;
@@ -537,7 +532,7 @@
             // 
             this.label18.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(490, 171);
+            this.label18.Location = new System.Drawing.Point(81, 181);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(38, 13);
             this.label18.TabIndex = 31;
@@ -545,16 +540,16 @@
             // 
             // borrowerphone
             // 
-            this.borrowerphone.Location = new System.Drawing.Point(606, 164);
+            this.borrowerphone.Location = new System.Drawing.Point(252, 169);
             this.borrowerphone.Name = "borrowerphone";
-            this.borrowerphone.Size = new System.Drawing.Size(130, 20);
+            this.borrowerphone.Size = new System.Drawing.Size(209, 20);
             this.borrowerphone.TabIndex = 30;
             // 
             // label13
             // 
             this.label13.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(410, 124);
+            this.label13.Location = new System.Drawing.Point(500, 121);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(59, 13);
             this.label13.TabIndex = 29;
@@ -562,7 +557,7 @@
             // 
             // borrowercity
             // 
-            this.borrowercity.Location = new System.Drawing.Point(606, 118);
+            this.borrowercity.Location = new System.Drawing.Point(661, 114);
             this.borrowercity.Name = "borrowercity";
             this.borrowercity.Size = new System.Drawing.Size(130, 20);
             this.borrowercity.TabIndex = 28;
@@ -570,7 +565,7 @@
             // addBorrower
             // 
             this.addBorrower.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.addBorrower.Location = new System.Drawing.Point(252, 195);
+            this.addBorrower.Location = new System.Drawing.Point(332, 209);
             this.addBorrower.Name = "addBorrower";
             this.addBorrower.Size = new System.Drawing.Size(196, 23);
             this.addBorrower.TabIndex = 27;
@@ -592,7 +587,7 @@
             // 
             this.label15.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(382, 69);
+            this.label15.Location = new System.Drawing.Point(500, 65);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(136, 13);
             this.label15.TabIndex = 25;
@@ -612,21 +607,21 @@
             // 
             this.borroweraddr1.Location = new System.Drawing.Point(252, 121);
             this.borroweraddr1.Name = "borroweraddr1";
-            this.borroweraddr1.Size = new System.Drawing.Size(130, 20);
+            this.borroweraddr1.Size = new System.Drawing.Size(209, 20);
             this.borroweraddr1.TabIndex = 23;
             // 
             // borrowerlname
             // 
-            this.borrowerlname.Location = new System.Drawing.Point(606, 66);
+            this.borrowerlname.Location = new System.Drawing.Point(661, 62);
             this.borrowerlname.Name = "borrowerlname";
-            this.borrowerlname.Size = new System.Drawing.Size(100, 20);
+            this.borrowerlname.Size = new System.Drawing.Size(130, 20);
             this.borrowerlname.TabIndex = 22;
             // 
             // borrowerfname
             // 
             this.borrowerfname.Location = new System.Drawing.Point(252, 69);
             this.borrowerfname.Name = "borrowerfname";
-            this.borrowerfname.Size = new System.Drawing.Size(100, 20);
+            this.borrowerfname.Size = new System.Drawing.Size(209, 20);
             this.borrowerfname.TabIndex = 21;
             // 
             // label17
@@ -675,7 +670,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button1.Location = new System.Drawing.Point(355, 187);
+            this.button1.Location = new System.Drawing.Point(547, 187);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(196, 23);
             this.button1.TabIndex = 14;
@@ -683,26 +678,48 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_3);
             // 
-            // textBox1
+            // label20
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.Color.Maroon;
-            this.textBox1.Location = new System.Drawing.Point(354, 22);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(304, 19);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.Text = "         LIBRARY INTERFACE";
+            this.label20.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Red;
+            this.label20.Location = new System.Drawing.Point(500, 172);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(153, 16);
+            this.label20.TabIndex = 34;
+            this.label20.Text = "Generated card number:";
+            this.label20.Visible = false;
+            this.label20.Click += new System.EventHandler(this.label20_Click);
             // 
-            // Form1
+            // label21
+            // 
+            this.label21.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Red;
+            this.label21.Location = new System.Drawing.Point(688, 172);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(0, 16);
+            this.label21.TabIndex = 35;
+            this.label21.Visible = false;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column1.HeaderText = "Click on row to check out";
+            this.Column1.Name = "Column1";
+            this.Column1.Text = "Proceed to check out";
+            this.Column1.UseColumnTextForButtonValue = true;
+            // 
+            // LIBRARY
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 458);
             this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "LIBRARY";
+            this.Text = "MY LIBRARY";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -785,9 +802,10 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.DataGridViewButtonColumn Column1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DataGridViewButtonColumn Column1;
     }
 }
 

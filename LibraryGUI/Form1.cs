@@ -16,7 +16,7 @@ using System.Data.SqlClient;
 namespace LibraryGUI
 {
        
-    public partial class Form1 : Form
+    public partial class LIBRARY : Form
     {
         SqlConnection cnsql;
         SqlCommand cmsql = new SqlCommand();
@@ -73,7 +73,7 @@ namespace LibraryGUI
         
 
 
-        public Form1()
+        public LIBRARY()
         {
             InitializeComponent();
         }
@@ -83,7 +83,7 @@ namespace LibraryGUI
             String book_id = Convert.ToString(BookId_text.Text);
             String author = Convert.ToString(AuthorName_text.Text);
             String title = Convert.ToString(Title_text.Text);
-           
+            
             if (book_id == "" && author == "" && title == "")
                 MessageBox.Show("Please enter a value for Book Id or Author or Title");
             else
@@ -93,6 +93,7 @@ namespace LibraryGUI
 
                 CreateConnection();
                 getData(book_id, author, title);
+               
                 CloseConnection();
             }
         }
@@ -150,6 +151,7 @@ namespace LibraryGUI
                 else
                 {
                     dataGridView1.DataSource = ds.Tables[0];
+                    dataGridView1.Columns["Column1"].DisplayIndex = 6;
                     dataGridView1.Visible = true;
                 }
             }
@@ -358,8 +360,8 @@ namespace LibraryGUI
 
         private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-            if (e.RowIndex > -1)
+
+            if (e.RowIndex > -1 && e.ColumnIndex == 0)
             {
                 String card_no = dataGridView3.Rows[e.RowIndex].Cells[3].Value.ToString();
                 String book_id = dataGridView3.Rows[e.RowIndex].Cells[4].Value.ToString();
@@ -367,7 +369,7 @@ namespace LibraryGUI
                 CheckinbuttonClick = true;                
                 CreateConnection();
                 deleteCheckinData(book_id, branch_id);
-                showCheckInResults(book_id, card_no, "", "");
+                showCheckInResults("%%", card_no, "", "");
                 CloseConnection();
             }
 
@@ -402,6 +404,8 @@ namespace LibraryGUI
             String fname = Convert.ToString(checkinFirstName.Text);
             String lname = Convert.ToString(checkinLastName.Text);
             dataGridView3.Visible = false;
+           
+            
             if (book_id == "" && card_no == "" && fname == "" && lname == "")
                 MessageBox.Show("Please enter a value for any of the fields to begin search");
             else
@@ -413,6 +417,7 @@ namespace LibraryGUI
 
                 CreateConnection();
                 showCheckInResults(book_id, card_no, fname, lname);
+                
                 CloseConnection();
             }
         }
@@ -430,13 +435,15 @@ namespace LibraryGUI
 
                 DataSet ds = new DataSet();
                 ds.Tables.Add(dt);
-
-                             
+                if (ds.Tables[0].Rows.Count == 0 && CheckinbuttonClick == false)
+                    MessageBox.Show("No borrowed books were found! Please retry");
+                else
+                {
                     dataGridView3.DataSource = ds.Tables[0];
+                    dataGridView3.Columns["check_in"].DisplayIndex = 6;
                     dataGridView3.Visible = true;
-
-                    if (ds.Tables[0].Rows.Count == 0 && CheckinbuttonClick == false)
-                        MessageBox.Show("No borrowed books were found! Please retry");
+                }
+                  
 
             }
             catch (SqlException ex)
@@ -551,7 +558,9 @@ namespace LibraryGUI
                     dataGridView4.DataSource = ds.Tables[0];
                     label19.Visible = true;
                     dataGridView4.Visible = true;
-
+                    label20.Visible = true;
+                    label21.Text = card_no;
+                    label21.Visible = true;
                 }
 
 
@@ -571,7 +580,7 @@ namespace LibraryGUI
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex > -1)
+            if (e.RowIndex > -1 && e.ColumnIndex == 0)
             {
                 String book_id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
                 String branch_id = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
@@ -595,8 +604,14 @@ namespace LibraryGUI
         {
             CheckoutBookId_text.Text = "";
             BranchId_text.Text = "";
+            CardNo_text.Text = "";
             CheckoutBookId_text.Enabled = true;
             BranchId_text.Enabled = true;
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
