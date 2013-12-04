@@ -25,6 +25,7 @@ namespace LibraryGUI
         String checkout_cardno;
         int checkout_availableCopies;
         int count_borrowed;
+        bool CheckinbuttonClick=false;
         String SQL_CONNECTION_STRING = ConfigurationManager.AppSettings["SQL_CONNECTION_STRING"].ToString();
         
         //getters and setters
@@ -363,7 +364,7 @@ namespace LibraryGUI
                 String card_no = dataGridView3.Rows[e.RowIndex].Cells[3].Value.ToString();
                 String book_id = dataGridView3.Rows[e.RowIndex].Cells[4].Value.ToString();
                 String branch_id = dataGridView3.Rows[e.RowIndex].Cells[5].Value.ToString();
-                
+                CheckinbuttonClick = true;                
                 CreateConnection();
                 deleteCheckinData(book_id, branch_id);
                 showCheckInResults(book_id, card_no, "", "");
@@ -434,7 +435,7 @@ namespace LibraryGUI
                     dataGridView3.DataSource = ds.Tables[0];
                     dataGridView3.Visible = true;
 
-                    if (ds.Tables[0].Rows.Count == 0)
+                    if (ds.Tables[0].Rows.Count == 0 && CheckinbuttonClick == false)
                         MessageBox.Show("No borrowed books were found! Please retry");
 
             }
@@ -566,6 +567,36 @@ namespace LibraryGUI
                 MessageBox.Show(genex.Message, "Exception caught due to invalid entries. Please re enter details and retry");
             }
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                String book_id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                String branch_id = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                CheckoutBookId_text.Text = book_id;
+                BranchId_text.Text = branch_id;
+                CheckoutBookId_text.Enabled = false;
+                BranchId_text.Enabled = false;
+                tabControl1.SelectedTab = tabPage2;
+            }
+        }
+
+        
+
+        private void dataGridView2_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            if (dataGridView2.Rows[e.RowIndex].Cells[2].ToString() == "")
+                e.Cancel = true;
+        }
+
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+            CheckoutBookId_text.Text = "";
+            BranchId_text.Text = "";
+            CheckoutBookId_text.Enabled = true;
+            BranchId_text.Enabled = true;
         }
     }
 }

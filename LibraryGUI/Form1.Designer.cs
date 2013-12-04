@@ -36,6 +36,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Title_text = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.AuthorName_text = new System.Windows.Forms.TextBox();
@@ -65,6 +66,8 @@
             this.checkinBookId = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label19 = new System.Windows.Forms.Label();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.label18 = new System.Windows.Forms.Label();
             this.borrowerphone = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -84,8 +87,8 @@
             this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bookTableAdapter = new LibraryGUI.LIBRARYDataSetTableAdapters.bookTableAdapter();
             this.bookcopiesBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.label19 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -94,18 +97,18 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lIBRARYDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lIBRARYDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookcopiesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookcopiesBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 91);
+            this.label1.Location = new System.Drawing.Point(32, 159);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 13);
             this.label1.TabIndex = 0;
@@ -113,15 +116,15 @@
             // 
             // BookId_text
             // 
-            this.BookId_text.Location = new System.Drawing.Point(195, 84);
+            this.BookId_text.Location = new System.Drawing.Point(143, 156);
             this.BookId_text.Name = "BookId_text";
-            this.BookId_text.Size = new System.Drawing.Size(100, 20);
+            this.BookId_text.Size = new System.Drawing.Size(162, 20);
             this.BookId_text.TabIndex = 1;
             // 
             // FindBook_button
             // 
             this.FindBook_button.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.FindBook_button.Location = new System.Drawing.Point(184, 161);
+            this.FindBook_button.Location = new System.Drawing.Point(305, 217);
             this.FindBook_button.Name = "FindBook_button";
             this.FindBook_button.Size = new System.Drawing.Size(196, 23);
             this.FindBook_button.TabIndex = 2;
@@ -132,7 +135,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(351, 87);
+            this.label3.Location = new System.Drawing.Point(351, 142);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 5;
@@ -154,6 +157,8 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.dataGridView1);
             this.tabPage1.Controls.Add(this.Title_text);
             this.tabPage1.Controls.Add(this.label4);
@@ -172,16 +177,29 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(22, 215);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
+            this.dataGridView1.Location = new System.Drawing.Point(49, 259);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(660, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(786, 150);
             this.dataGridView1.TabIndex = 10;
             this.dataGridView1.Visible = false;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Click on row to check out";
+            this.Column1.Name = "Column1";
+            this.Column1.Text = "Proceed to check out";
+            this.Column1.UseColumnTextForButtonValue = true;
             // 
             // Title_text
             // 
-            this.Title_text.Location = new System.Drawing.Point(87, 127);
+            this.Title_text.Location = new System.Drawing.Point(434, 178);
             this.Title_text.Name = "Title_text";
             this.Title_text.Size = new System.Drawing.Size(312, 20);
             this.Title_text.TabIndex = 9;
@@ -189,7 +207,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 130);
+            this.label4.Location = new System.Drawing.Point(351, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(27, 13);
             this.label4.TabIndex = 8;
@@ -197,9 +215,9 @@
             // 
             // AuthorName_text
             // 
-            this.AuthorName_text.Location = new System.Drawing.Point(434, 84);
+            this.AuthorName_text.Location = new System.Drawing.Point(434, 135);
             this.AuthorName_text.Name = "AuthorName_text";
-            this.AuthorName_text.Size = new System.Drawing.Size(259, 20);
+            this.AuthorName_text.Size = new System.Drawing.Size(312, 20);
             this.AuthorName_text.TabIndex = 7;
             // 
             // richTextBox1
@@ -207,9 +225,9 @@
             this.richTextBox1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.richTextBox1.Location = new System.Drawing.Point(90, 12);
+            this.richTextBox1.Location = new System.Drawing.Point(291, 60);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(516, 72);
+            this.richTextBox1.Size = new System.Drawing.Size(303, 69);
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = " Enter at least one of the following and click \"Find Book\"\n   Book ID\n   Title of" +
     " the book\n    Author name\n";
@@ -217,6 +235,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.White;
+            this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.label7);
             this.tabPage2.Controls.Add(this.ConfirmCheckOut_Button);
             this.tabPage2.Controls.Add(this.dataGridView2);
@@ -259,12 +278,16 @@
             // 
             // dataGridView2
             // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(248, 260);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(643, 150);
             this.dataGridView2.TabIndex = 11;
             this.dataGridView2.Visible = false;
+            this.dataGridView2.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView2_RowValidating);
             // 
             // label6
             // 
@@ -304,11 +327,11 @@
             // Checkout_button
             // 
             this.Checkout_button.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.Checkout_button.Location = new System.Drawing.Point(100, 185);
+            this.Checkout_button.Location = new System.Drawing.Point(46, 187);
             this.Checkout_button.Name = "Checkout_button";
             this.Checkout_button.Size = new System.Drawing.Size(196, 23);
             this.Checkout_button.TabIndex = 3;
-            this.Checkout_button.Text = "Proceed to Check Out";
+            this.Checkout_button.Text = "Show check out items";
             this.Checkout_button.UseVisualStyleBackColor = false;
             this.Checkout_button.Click += new System.EventHandler(this.Checkout_button_Click);
             // 
@@ -380,6 +403,9 @@
             // 
             // dataGridView3
             // 
+            this.dataGridView3.AllowUserToAddRows = false;
+            this.dataGridView3.AllowUserToDeleteRows = false;
+            this.dataGridView3.AllowUserToResizeRows = false;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.check_in});
@@ -483,6 +509,29 @@
             this.tabPage4.Size = new System.Drawing.Size(897, 416);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Add Borrower";
+            // 
+            // label19
+            // 
+            this.label19.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(124, 231);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(118, 13);
+            this.label19.TabIndex = 33;
+            this.label19.Text = "Added borrower details:";
+            this.label19.Visible = false;
+            // 
+            // dataGridView4
+            // 
+            this.dataGridView4.AllowUserToAddRows = false;
+            this.dataGridView4.AllowUserToDeleteRows = false;
+            this.dataGridView4.AllowUserToResizeRows = false;
+            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView4.Location = new System.Drawing.Point(93, 247);
+            this.dataGridView4.Name = "dataGridView4";
+            this.dataGridView4.Size = new System.Drawing.Size(643, 150);
+            this.dataGridView4.TabIndex = 32;
+            this.dataGridView4.Visible = false;
             // 
             // label18
             // 
@@ -623,25 +672,28 @@
             this.bookcopiesBindingSource1.DataMember = "book_copies";
             this.bookcopiesBindingSource1.DataSource = this.lIBRARYDataSetBindingSource;
             // 
-            // dataGridView4
+            // button1
             // 
-            this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView4.Location = new System.Drawing.Point(93, 247);
-            this.dataGridView4.Name = "dataGridView4";
-            this.dataGridView4.Size = new System.Drawing.Size(643, 150);
-            this.dataGridView4.TabIndex = 32;
-            this.dataGridView4.Visible = false;
+            this.button1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button1.Location = new System.Drawing.Point(355, 187);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(196, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Clear selection";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_3);
             // 
-            // label19
+            // textBox1
             // 
-            this.label19.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(124, 231);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(118, 13);
-            this.label19.TabIndex = 33;
-            this.label19.Text = "Added borrower details:";
-            this.label19.Visible = false;
+            this.textBox1.BackColor = System.Drawing.Color.White;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.ForeColor = System.Drawing.Color.Maroon;
+            this.textBox1.Location = new System.Drawing.Point(354, 22);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(304, 19);
+            this.textBox1.TabIndex = 11;
+            this.textBox1.Text = "         LIBRARY INTERFACE";
             // 
             // Form1
             // 
@@ -664,12 +716,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lIBRARYDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lIBRARYDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookcopiesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bookcopiesBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -733,6 +785,9 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DataGridView dataGridView4;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.DataGridViewButtonColumn Column1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
