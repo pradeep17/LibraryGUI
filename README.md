@@ -4,7 +4,8 @@ LibraryGUI
 Final version of Library application source files
 
 The data base connection parameters need to be modified to appropriate value
-to run the application
+to run the application.
+Source file name: LibraryGUI\LibraryGUI\Form1.cs
 
 Description of the GUI and user manual:
 
