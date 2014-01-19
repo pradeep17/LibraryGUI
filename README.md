@@ -9,7 +9,8 @@ Source file name: LibraryGUI\LibraryGUI\Form1.cs
 
 Description of the GUI and user manual:
 
-1. Tab 1 - Determining Book Availability
+1. Determining Book Availability
+    Implemented in "Books Availability" Tab page
 
 	*  Users can search for a book, given any combination of book_id, title, and/or author_name. Supports substring matching. Following are displayed:
 	* 
@@ -17,27 +18,27 @@ Description of the GUI and user manual:
 		* branch_id
 		* Both Total number and Available number of book copies at each branch. 
 		
-2. Tab 2  Book Loans:
-Checking Out Books
+2. Book Loans:
+Implemented in "Check out" Tab page
 
 	*     Function is to check out a book, given the combination of BOOK_COPIES(book_id, branch_id) and BORROWER(Card_no), (a new tuple in BOOK_LOANS). The date_out is today’s date. The due_date is 14 days after the date_out.
 	* 	* Each BORROWER is permitted a maximum of 3 BOOK_LOANS. If a BORROWER already has 3 BOOK_LOANS, then the checkout (i.e. create new BOOK_LOANStuple) should fail and returns an error message.
 		* If the number of BOOK_LOANS for a given book at a branch already equals the No_of_copies (i.e. There are no more book copies available at your library_branch), then the checkout fails and returns an error message.
 
-3. Tab 3 - Check in:
-Checking In Books
+3. Checking in books:
+Implemented in "Check in" Tab page
 
 	* Check in a book. Locates BOOK_LOANS tuples by searching on any of book_id, Card_no, and/or any part of BORROWER name. Once located, provides a way of selecting one of potentially multiple results and a button (or menu item) to check in (i.e. delete that BOOK_LOANS tuple).
 
-4. Tab 4 - Borrowers
-
+4. Adding Borrowers
+Implemented in "Add Borrower" Tab page
 	*    Users can create new borrowers in the system. 
 	* 
 		* All name and address attributes are required to create a new account (i.e. not null).
 		* Borrowers are allowed to possess exactly one library card. If a new borrower is attempted withe same fname, lname, and address, then operation will be rejected and an error message is returned.
 
 
-
+Features:
 
 Feature #1: Easy and fast checkout
        Located at: “Books Availability” Tab page
